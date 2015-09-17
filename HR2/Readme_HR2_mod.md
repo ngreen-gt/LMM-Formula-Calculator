@@ -1,3 +1,28 @@
+hr2 (c++) lmm-based formula assignment calculator (test_hr2_n3)
+developed by Nelson Green (c) 2015
+   previous hr2 distributed via gnu gpl (old readme below)
+
+**example of programs difference (batch program)**
+
+caveat:
+  -windows batch file (compatible)
+  
+changelog:
+  -no longer folder specific (see older readme below)
+  
+folder contains:
+  -source files (.c) (test_hr2_n,test_hr2_n3)
+  -input files (.dat)
+  -prior output file (.out,.txt)
+  -compiled programs (.exe)
+  -batch file
+
+known issues:
+  - test_hr2_n3 (line 482): electron handling is disabled. it may work okay (with lmm code) but is not tested.  for now, only neutral masses are used in the input file.
+
+
+*****Older readme*****************************
+
 Run the HR2 programs with the batch programs, which also will mark timestamps (before & after).
 
 To work place this folder in the C directory or modify the batch program (Line 2 - cd C:/HR2_program_testing)
