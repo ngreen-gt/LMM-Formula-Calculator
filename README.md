@@ -1,6 +1,9 @@
 Overview/Updates/Quick Start
 ============================================================================================
-2015-08-15 - ngreen-gt: Adding the  
+LMM formula calculatorsCHOFIT3 contains a fast algorithm for calculating the formula from exact mass for mass spectrometry (< 1 ppm error).  It is based of low-mass moiety (LMM).  Further background below.  Future project with he LMM algorithm involve incorporating it into mass spectra analysis software.     this code involves incorporation into other Example programs      Projects releated to the low-mass based formula assignment algorithm.  Projects in analysis of mass spectrometry for high/ultrahigh mass resolution.   formula assignment.    formulae assignment.  More background below.  Formula assignment Manage the various formula assingment tasks here.  Background about it is below.  For work related to formula assignment.  Include formula calculators, heuristics, analysis, This is a repository for all things low-mass moiety and formulae assingnment.  Right now it is home to simple formula calculator.  
+
+2014-11-26 - User-NG: Created repository
+2015-08-15 - ngreen-gt: Added CHOFIT3_min.pas, a stripped down version of CHOFIT3.  It is a supplement to the Analytical Chemistry paper.
 
 CHOFIT3_min.pas (Version 1)
 ***************
@@ -14,23 +17,4 @@ ex. Mass List (ex. 590.232 Da, 592.343 Da)  >>> Formulae (ex. C20 H28 O16, C24 H
 
 Background
 ======================================================================
-
-Analysis of complex samples 
-LMM Formula Calculator is a simple formula calculator.  It finds ALL formulae corresponding to a mass.
-
-*User
-*Accept mass list for input (multiple r  
-
-ex.  720 daltons equals carbon-60 (C60)
-
-:  Find molecular formula (ex. C20 H28 O16) from exact mass (ex. 590.043432).  Formula calculators find the molecular formula (ex. C20 H28 O16) that corresponds with an exact masses (ex. 590.043432 Da). into a corresponding . The algorithm in these programs comb Exact massses are determined by mass spectrometryIn 
-mass spectra Formula Calculator for accurate masses using a low-mass 
-moiety algorithm. Developed in C/C++, the source code was originally the 
-HR2 program used in the Seven Golden Rules paper. 
-
-2014-11-26 - User-NG: Created repository. 2015-08-15 - User-NG: Added 
-
-Known Issues 
-
-=============== 
 
