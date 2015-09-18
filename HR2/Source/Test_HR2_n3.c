@@ -450,7 +450,7 @@ while (((core_calc_mass<limit_lo) || (core_calc_mass>limit_hi)) && (attempts<max
 if ((core_calc_mass>=limit_lo) && (core_calc_mass<=limit_hi) && ((el[2].cnt+el[4].cnt+el[5].cnt+el[10].cnt-el[7].cnt-el[8].cnt-el[12].cnt-el[13].cnt)>=0))
 	{
 	el[0].cnt=el[0].cnt-el[1].cnt;
-	el[2].cnt=el[2].cnt+el[4].cnt+el[5].cnt+el[10].cnt-el[7].cnt-el[8].cnt-el[12].cnt-el[13].cnt;
+	el[2].cnt=el[2].cnt+el[4].cnt+el[5].cnt+el[10].cnt-el[7].cnt-el[8].cnt-el[9].cnt-el[12].cnt-el[13].cnt;
 	return true;
 	}
 else
@@ -470,6 +470,9 @@ else
 * Returns. 	mass of the ion.	  				*
 * Note:		Takes care of charge and electron mass!   		*
 * 		(Positive charge means removal of electrons).	 	*
+* Note:   This is now only calculating the mass for         *
+*         printf. And now calculate the ion mass from       *
+*         the composition.  -NG                             * 
 *************************************************************************/
 double calc_mass(void)
 {
@@ -479,7 +482,7 @@ double sum = 0.0;
 for (i=0; i < nr_el; i++)
 	sum += el[i].mass * el[i].cnt;
 
-return (sum /*- (charge * electron)*/);  //Not sure what to do about electron yet
+return (sum + (charge * electron));  
 }
 
 
@@ -666,9 +669,6 @@ bool formulaOK;
 time( &start );		// start time
 printf("\n");		/* linefeed */
 
-/* calculate lower limit for loop exits */
-limit_lo = measured_mass - (tolerance / 1000.0);
-
 if (strlen(comment))	/* print only if there is some text to print */
 	printf ("Text      \t%s\n", comment);
 
@@ -685,6 +685,10 @@ printf ("Charge  \t%+.1lf\n", charge);
 hit = 0;			/* Reset counter */
 counter = 0;
 set_break = false;	/* set breaker for element counts to false */
+
+/* calculate lower limit for loop exits */
+measured_mass = measured_mass - (charge * electron); 
+limit_lo = measured_mass - (tolerance / 1000.0);
 
 /* Now let's run the big big loop ... I'd like to do that
    recursively but did not yet figure out how ;-) 
@@ -752,7 +756,7 @@ while (el[3].cnt++ < el[3].max) /*"D"*/{
     formulaOK = false;
 	core_mass = measured_mass - (el[3].cnt*(el[3].mass-el[2].mass)+el[1].cnt*(el[1].mass-el[0].mass)+
 				el[4].cnt*(el[4].mass+el[2].mass)+el[5].cnt*(el[5].mass+el[2].mass)+el[7].cnt*(el[7].mass-el[2].mass)+
-				el[8].cnt*(el[8].mass-el[2].mass)+el[10].cnt*(el[10].mass+el[2].mass)+el[11].cnt*el[11].mass+el[12].cnt*(el[12].mass-el[2].mass)+
+				el[8].cnt*(el[8].mass-el[2].mass)+el[9].cnt*(el[9].mass-el[2].mass)+el[10].cnt*(el[10].mass+el[2].mass)+el[11].cnt*el[11].mass+el[12].cnt*(el[12].mass-el[2].mass)+
 				el[13].cnt*(el[13].mass-el[2].mass));
 	if (core_mass>el[0].mass+4*el[2].mass)
 		{
@@ -786,7 +790,6 @@ while (el[3].cnt++ < el[3].max) /*"D"*/{
 	//Calculus loop with print out
 	//************************************************************************************************************/	
 	if (formulaOK)
-	//if ((mass >= limit_lo) && (mass <= limit_hi)) /* within limits? */
 	{	
 		
 		// element check will be performed always, if variable bool element_probability is true also probabilities will be calculated
