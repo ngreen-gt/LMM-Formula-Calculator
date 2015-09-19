@@ -24,7 +24,7 @@ Converts mass list to formulae.
 
 ex. Mass List (ex. 590.232 Da, 592.343 Da)  >>> Formulae (ex. C20 H28 O16, C24 H28)
 
-1 Compiled in FreePascal (newest compiler at FreePascal.org)
-2 Non-GUI version.  Syntax for command prompt (Win) "CHOFIT3_min <input name> <output name> <low mass> <high mass> <max nitrogen> <max sulfur> <max phosphorus> <max carbon-13>"  *The input file must be .dat and output files are automatically .out
-3 Input text file contain one mass per line.  Mass must be ion mass (charge = -1).
-4 Limited user settings (ex. error = 0.4 ppm, charge = -1). Further details are in .pas file.
+1. Compiled in FreePascal (newest compiler at FreePascal.org)
+2. Non-GUI version.  Syntax for command prompt (Win) "CHOFIT3_min <input name> <output name> <low mass> <high mass> <max nitrogen> <max sulfur> <max phosphorus> <max carbon-13>"  *The input file must be .dat and output files are automatically .out
+3. Input text file contain one mass per line.  Mass must be ion mass (charge = -1).
+4. Limited user settings (ex. error = 0.4 ppm, charge = -1). Further details are in .pas file.
